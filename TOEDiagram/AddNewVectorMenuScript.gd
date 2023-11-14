@@ -23,6 +23,9 @@ func refreshInputFields():
 	xInput.clear()
 	yInput.clear()
 	nameInput.clear()
+	newName = "Vector2"
+	newXPos = 0.0
+	newYPos = 0.0 
 
 
 func _on_name_input_text_changed(new_text):
@@ -34,7 +37,7 @@ func _on_x_input_text_changed(new_text):
 
 
 func _on_y_input_text_changed(new_text):
-	newYPos = float(new_text)
+	newYPos = -float(new_text)
 
 
 func _on_create_button_button_up():

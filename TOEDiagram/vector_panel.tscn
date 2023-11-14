@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://VectorPanel.gd" id="1_cqrfv"]
 
 [node name="VectorPanel" type="Panel"]
-custom_minimum_size = Vector2(250, 70)
+custom_minimum_size = Vector2(300, 70)
 anchors_preset = -1
 anchor_right = 0.217
 anchor_bottom = 0.108
@@ -54,10 +54,10 @@ text = "+"
 
 [node name="DeleteButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 225.0
-offset_top = 32.0
-offset_right = 244.0
-offset_bottom = 63.0
+offset_left = 268.0
+offset_top = 35.0
+offset_right = 287.0
+offset_bottom = 66.0
 text = "У"
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

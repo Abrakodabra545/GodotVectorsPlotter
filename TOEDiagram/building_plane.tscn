@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy4qtqe5yg1tw"]
+
+[ext_resource type="Script" path="res://building_planeScript.gd" id="1_4ie7l"]
+
+[node name="BuildingPlane" type="Node2D" groups=["vectors"]]
+script = ExtResource("1_4ie7l")

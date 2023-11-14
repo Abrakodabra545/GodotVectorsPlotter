@@ -21,11 +21,17 @@ func _ready():
 		nameLabel.set_text(vectorName)
 	else:
 			nameLabel.set_text(vectorName)
-			coordLabel.set_text(str(vectorCoord))
+			coordLabel.set_text(str(vectorCoord * Vector2(1, -1)))
+			
 
 
 func set_panel_to_addview():
 	addView = true
+
+func set_vector_id(id):
+	vectorId = id
+func get_vector_id():
+	return vectorId
 
 func set_name_of_vector(nameOfThisVector):
 	vectorName = nameOfThisVector

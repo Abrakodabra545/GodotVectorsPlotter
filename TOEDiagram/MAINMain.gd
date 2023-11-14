@@ -3,10 +3,12 @@ extends Node2D
 
 var listOfVectorsName = []
 var listOfVectorsPosition = []
+var listofVectorsObject = []
 
-@onready var UIListOfVectors = $UI/ScrollContainer/VBoxContainer
+@onready var UIListOfVectors = $Camera2D/UI/Panel/ScrollContainer/VBoxContainer
 @onready var vectorPanel = load("res://vector_panel.tscn")
-@onready var addMeny = $UI/AddMenu
+@onready var addMeny = $Camera2D/UI/AddMenu
+@onready var buildingPlane = $BuildingPlane
 
 func _ready():
 	refreshListOfVectors()
@@ -14,6 +16,8 @@ func _ready():
 		
 
 func refreshListOfVectors():
+	buildingPlane.delete_all()
+	
 	for child in UIListOfVectors.get_children():
 		child.queue_free()
 		
@@ -23,8 +27,9 @@ func refreshListOfVectors():
 		vectorToAdd.set_name_of_vector(listOfVectorsName[currentVector])
 		vectorToAdd.set_coord_of_vector(listOfVectorsPosition[currentVector])
 		vectorToAdd.deleteVectorPressed.connect(deleteVector.bind())
-		vectorToAdd.vectorId = currentVector
+		vectorToAdd.set_vector_id(currentVector)
 		UIListOfVectors.add_child(vectorToAdd)
+		buildingPlane.build_vector(listOfVectorsPosition[currentVector], currentVector)
 		
 	var vectorToAdd = vectorPanel.instantiate()
 	vectorToAdd.set_panel_to_addview()
@@ -37,6 +42,7 @@ func _on_add_new_vector_button_up():
 func deleteVector(id):
 	listOfVectorsName.remove_at(id)
 	listOfVectorsPosition.remove_at(id)
+	
 	refreshListOfVectors()
 
 func _on_add_menu_create_button_pressed():
