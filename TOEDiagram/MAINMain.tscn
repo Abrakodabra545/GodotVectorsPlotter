@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpdfg7dpoprh"]
+[gd_scene load_steps=6 format=3 uid="uid://bpdfg7dpoprh"]
 
 [ext_resource type="Texture2D" uid="uid://kx0f82r8sjca" path="res://KoordSystem.png" id="1_4cqm0"]
 [ext_resource type="Script" path="res://MAINMain.gd" id="1_a0v0q"]
-[ext_resource type="PackedScene" uid="uid://cm4b36u6cvobq" path="res://AddNewVectorMenu.tscn" id="3_tdqqg"]
 [ext_resource type="PackedScene" uid="uid://dy4qtqe5yg1tw" path="res://building_plane.tscn" id="4_cdt31"]
+[ext_resource type="PackedScene" uid="uid://y5bk0a4sv5kn" path="res://UIScene.tscn" id="4_qp38g"]
+[ext_resource type="LabelSettings" uid="uid://dtwvgpv4kkl7s" path="res://new_label_settings.tres" id="5_6f27i"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_a0v0q")
@@ -26,61 +27,24 @@ position = Vector2(148, 316)
 position = Vector2(618, 345)
 zoom = Vector2(1.038, 1.038)
 
-[node name="UI" type="Control" parent="Camera2D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -618.0
-offset_top = -345.0
-offset_right = -618.0
-offset_bottom = -345.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+[node name="UI" parent="." instance=ExtResource("4_qp38g")]
 
-[node name="Panel" type="Panel" parent="Camera2D/UI"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 837.0
-offset_top = -4.0
-offset_right = 1247.0
-offset_bottom = 704.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="xMaxLabel" type="Label" parent="."]
+offset_left = 747.0
+offset_top = 335.0
+offset_right = 787.0
+offset_bottom = 358.0
+text = "360"
+label_settings = ExtResource("5_6f27i")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/UI/Panel"]
-custom_minimum_size = Vector2(250, 100)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -354.0
-offset_top = -301.0
-offset_bottom = 301.0
-grow_horizontal = 0
-grow_vertical = 2
-vertical_scroll_mode = 2
+[node name="yMaxLabel" type="Label" parent="."]
+offset_left = 396.0
+offset_top = 40.0
+offset_right = 436.0
+offset_bottom = 71.0
+text = "260"
+label_settings = ExtResource("5_6f27i")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/UI/Panel/ScrollContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="AddMenu" parent="Camera2D/UI" instance=ExtResource("3_tdqqg")]
-visible = false
-layout_mode = 0
-offset_left = 245.0
-offset_top = 192.0
-offset_right = 863.0
-offset_bottom = 455.0
-
-[connection signal="createButtonPressed" from="Camera2D/UI/AddMenu" to="." method="_on_add_menu_create_button_pressed"]
-[connection signal="exitButtonPressed" from="Camera2D/UI/AddMenu" to="." method="_on_add_menu_exit_button_pressed"]
+[connection signal="onApplyButtonPressed" from="UI" to="." method="_on_ui_on_apply_button_pressed"]
+[connection signal="onCreateButtonPressed" from="UI" to="." method="_on_ui_on_create_button_pressed"]
+[connection signal="onExitButtonPressed" from="UI" to="." method="_on_ui_on_exit_button_pressed"]

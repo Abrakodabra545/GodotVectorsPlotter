@@ -5,12 +5,22 @@ var listOfVectorsName = []
 var listOfVectorsPosition = []
 var listofVectorsObject = []
 
-@onready var UIListOfVectors = $Camera2D/UI/Panel/ScrollContainer/VBoxContainer
+@onready var UIListOfVectors = $UI/Control/Panel/ScrollContainer/VBoxContainer
 @onready var vectorPanel = load("res://vector_panel.tscn")
-@onready var addMeny = $Camera2D/UI/AddMenu
+@onready var addMeny = $UI/Control/AddMenu
 @onready var buildingPlane = $BuildingPlane
+@onready var xMaxLabel = $xMaxLabel
+@onready var yMaxLabel = $yMaxLabel
+@onready var UI = $UI
+
+
+var scaleOfVector = 1
+var defaultXMax = 370
+var defaultYMax = 270
+var numbersAfterDotInMaxCoords = 0.001
 
 func _ready():
+	refreshMaxCoord(scaleOfVector)
 	refreshListOfVectors()
 		
 		
@@ -29,26 +39,27 @@ func refreshListOfVectors():
 		vectorToAdd.deleteVectorPressed.connect(deleteVector.bind())
 		vectorToAdd.set_vector_id(currentVector)
 		UIListOfVectors.add_child(vectorToAdd)
-		buildingPlane.build_vector(listOfVectorsPosition[currentVector], currentVector)
+		buildingPlane.build_vector(listOfVectorsPosition[currentVector] * scaleOfVector, currentVector)
 		
 	var vectorToAdd = vectorPanel.instantiate()
 	vectorToAdd.set_panel_to_addview()
 	vectorToAdd.addVectorPressed.connect(_on_add_new_vector_button_up.bind())
 	UIListOfVectors.add_child(vectorToAdd)
 
+func refreshMaxCoord(currentScale):
+	xMaxLabel.set_text(str(snapped((defaultXMax / currentScale), numbersAfterDotInMaxCoords)))
+	yMaxLabel.set_text(str(snapped((defaultYMax / currentScale), numbersAfterDotInMaxCoords)))
+	
 func _on_add_new_vector_button_up():
 	addMeny.show()
+	UI.toggle_UI(false)
+	
 	
 func deleteVector(id):
 	listOfVectorsName.remove_at(id)
 	listOfVectorsPosition.remove_at(id)
 	
 	refreshListOfVectors()
-
-func _on_add_menu_create_button_pressed():
-	addMeny.hide()
-	add_new_vector()
-	addMeny.refreshInputFields()
 	
 func add_new_vector():
 	var nameOfVectorToAdd = [""]
@@ -61,7 +72,20 @@ func add_new_vector():
 	listOfVectorsPosition += coordOfVectorToAdd
 	refreshListOfVectors()
 
+func _on_ui_on_create_button_pressed():
+	addMeny.hide()
+	add_new_vector()
+	UI.toggle_UI(true)
+	addMeny.refreshInputFields()
 
-func _on_add_menu_exit_button_pressed():
+
+func _on_ui_on_exit_button_pressed():
 	addMeny.hide()
 	addMeny.refreshInputFields()
+	UI.toggle_UI(true)
+
+
+func _on_ui_on_apply_button_pressed(newScale):
+	scaleOfVector = newScale
+	refreshMaxCoord(newScale)
+	refreshListOfVectors()

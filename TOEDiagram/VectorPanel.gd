@@ -7,11 +7,13 @@ var vectorName = "Vector2"
 var vectorCoord = Vector2(0.0, 0.0)
 var vectorId = 0
 var addView = false
+var isPanelDisabled = false
 
 @onready var nameLabel = $nameLabel
 @onready var coordLabel = $coordLabel
 @onready var addButton = $Button
 @onready var deleteButton = $DeleteButton
+
 func _ready():
 	if addView:
 		coordLabel.hide()
@@ -24,6 +26,11 @@ func _ready():
 			coordLabel.set_text(str(vectorCoord * Vector2(1, -1)))
 			
 
+func toggle_panel(state):
+	addButton.disabled = !state
+	deleteButton.disabled = !state
+func get_state():
+	return isPanelDisabled
 
 func set_panel_to_addview():
 	addView = true

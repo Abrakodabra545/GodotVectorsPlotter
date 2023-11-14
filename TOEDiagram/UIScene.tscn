@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=3 uid="uid://y5bk0a4sv5kn"]
+
+[ext_resource type="Script" path="res://UIScene.gd" id="1_1t8d1"]
+[ext_resource type="PackedScene" uid="uid://cm4b36u6cvobq" path="res://AddNewVectorMenu.tscn" id="1_ff0ph"]
+
+[node name="UIScene" type="CanvasLayer"]
+script = ExtResource("1_1t8d1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -387.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
+custom_minimum_size = Vector2(250, 100)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = 17.0
+offset_bottom = -233.0
+grow_horizontal = 0
+grow_vertical = 2
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/ScrollContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AddMenu" parent="Control" instance=ExtResource("1_ff0ph")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.0
+offset_top = -131.5
+offset_right = 309.0
+offset_bottom = 131.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScaleEnter" type="LineEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -349.0
+offset_top = -203.0
+offset_right = -281.938
+offset_bottom = -172.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "1"
+
+[node name="ScaleLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = -201.0
+offset_right = -227.0
+offset_bottom = -175.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Scale
+"
+
+[node name="ApplyButton" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -61.0
+offset_right = -110.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Apply"
+
+[connection signal="createButtonPressed" from="Control/AddMenu" to="." method="_on_add_menu_create_button_pressed"]
+[connection signal="exitButtonPressed" from="Control/AddMenu" to="." method="_on_add_menu_exit_button_pressed"]
+[connection signal="text_changed" from="Control/ScaleEnter" to="." method="_on_scale_enter_text_changed"]
+[connection signal="button_up" from="Control/ApplyButton" to="." method="_on_apply_button_button_up"]
