@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" uid="uid://dpti7vo2w7vfi" path="res://old/greenArrow.png" id="1_337t1"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(-512, -11)
+texture = ExtResource("1_337t1")
+offset = Vector2(512, 11)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://old/Main.gd" id="1_xvqkg"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xvqkg")
+metadata/_edit_horizontal_guides_ = [550.0]
+metadata/_edit_vertical_guides_ = [230.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-109, 142)
+offset = Vector2(576, 324)

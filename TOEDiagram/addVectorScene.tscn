@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcfmpcnlctqnv"]
+
+[ext_resource type="PackedScene" uid="uid://cegikfy1jt504" path="res://vector_panel.tscn" id="1_pdhag"]
+
+[node name="VectorPanel" instance=ExtResource("1_pdhag")]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqc8fxs2w5toj"]
+
+[ext_resource type="Script" path="res://VectorsPanel.gd" id="1_1ukxt"]
+
+[node name="Container" type="Container"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1ukxt")

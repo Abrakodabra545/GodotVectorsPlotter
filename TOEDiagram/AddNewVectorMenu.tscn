@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm4b36u6cvobq"]
+
+[ext_resource type="Script" path="res://AddNewVectorMenuScript.gd" id="1_erjsr"]
+
+[node name="Base" type="Panel"]
+offset_right = 618.0
+offset_bottom = 263.0
+script = ExtResource("1_erjsr")
+
+[node name="nameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.5
+offset_top = 16.0
+offset_right = 30.5
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Name"
+
+[node name="nameInput" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -123.0
+offset_top = 62.0
+offset_right = 123.0
+offset_bottom = 93.0
+grow_horizontal = 2
+placeholder_text = "Enter new name"
+
+[node name="xInput" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -186.0
+offset_top = 139.0
+offset_right = -68.0
+offset_bottom = 170.0
+grow_horizontal = 2
+placeholder_text = "X value"
+
+[node name="yInput" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 80.0
+offset_top = 139.0
+offset_right = 198.0
+offset_bottom = 170.0
+grow_horizontal = 2
+placeholder_text = "Y value"
+
+[node name="xLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 140.0
+offset_right = 137.0
+offset_bottom = 166.0
+text = "X:"
+
+[node name="yLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 141.0
+offset_right = 403.0
+offset_bottom = 167.0
+text = "Y:"
+
+[node name="CreateButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -61.0
+offset_right = 84.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Create"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 12.0
+offset_right = 604.0
+offset_bottom = 43.0
+text = "Х"
+
+[connection signal="text_changed" from="nameInput" to="." method="_on_name_input_text_changed"]
+[connection signal="text_changed" from="xInput" to="." method="_on_x_input_text_changed"]
+[connection signal="text_changed" from="yInput" to="." method="_on_y_input_text_changed"]
+[connection signal="button_up" from="CreateButton" to="." method="_on_create_button_button_up"]
+[connection signal="button_up" from="ExitButton" to="." method="_on_exit_button_button_up"]
