@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://dd6cv0pya4d80" path="res://Arrow.png" id="1_65ug6"]
 
 [node name="Sprite2D" type="Sprite2D"]
+position = Vector2(20.0988, 0.0886383)
 rotation = 1.5708
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_65ug6")
+offset = Vector2(-1.77131, 401.975)

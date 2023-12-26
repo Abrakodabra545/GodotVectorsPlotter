@@ -30,6 +30,7 @@ offset_right = 123.0
 offset_bottom = 93.0
 grow_horizontal = 2
 placeholder_text = "Enter new name"
+max_length = 10
 
 [node name="xInput" type="LineEdit" parent="."]
 layout_mode = 1

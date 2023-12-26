@@ -12,7 +12,6 @@ func _ready():
 	arrowPictureToAdd.position = vectorCoord
 	arrowPictureToAdd.rotation = vectorCoord.angle() + PI/2
 	arrowPictureToAdd.scale = Vector2(1, 1) * arrowScale
-	print(vectorCoord.length()/100)
 	add_child(arrowPictureToAdd)
 	
 

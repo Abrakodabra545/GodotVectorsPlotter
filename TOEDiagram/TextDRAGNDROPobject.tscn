@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck0hvbo5wdrfm"]
+
+[ext_resource type="Script" path="res://TextDRAGNDROPobject.gd" id="1_58qie"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q7r40"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="TextField" type="Label"]
+offset_right = 62.0
+offset_bottom = 26.0
+pivot_offset = Vector2(32, 14)
+label_settings = SubResource("LabelSettings_q7r40")
+autowrap_mode = 2
+script = ExtResource("1_58qie")

@@ -2,6 +2,7 @@ extends Panel
 
 signal addVectorPressed
 signal deleteVectorPressed
+signal addNameFieldPressed
 
 var vectorName = "Vector2"
 var vectorCoord = Vector2(0.0, 0.0)
@@ -13,12 +14,15 @@ var isPanelDisabled = false
 @onready var coordLabel = $coordLabel
 @onready var addButton = $Button
 @onready var deleteButton = $DeleteButton
+@onready var addNameFieldButton = $NameButton
+
 
 func _ready():
 	if addView:
 		coordLabel.hide()
 		addButton.show()
 		deleteButton.hide()
+		addNameFieldButton.hide()
 		set_name_of_vector("Add new vector")
 		nameLabel.set_text(vectorName)
 	else:
@@ -29,6 +33,7 @@ func _ready():
 func toggle_panel(state):
 	addButton.disabled = !state
 	deleteButton.disabled = !state
+	addNameFieldButton.disabled = !state
 func get_state():
 	return isPanelDisabled
 
@@ -58,3 +63,6 @@ func _on_button_button_up():
 func _on_delete_button_button_up():
 	deleteVectorPressed.emit(vectorId)
 	queue_free()
+
+func _on_name_button_button_up():
+	addNameFieldPressed.emit(vectorName)

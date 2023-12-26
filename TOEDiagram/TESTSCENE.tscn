@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdar7cwkaoqr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atqek"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_281g6"]
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0, 0, 0, 1)
+LineEdit/styles/normal = SubResource("StyleBoxFlat_atqek")
+
+[node name="Area2D" type="Area2D"]
+
+[node name="LineEdit" type="LineEdit" parent="."]
+offset_left = 50.0
+offset_top = 21.0
+offset_right = 147.0
+offset_bottom = 76.0
+theme = SubResource("Theme_281g6")
+placeholder_text = "ewfsdf"
+alignment = 1
+max_length = 10
+expand_to_text_length = true
